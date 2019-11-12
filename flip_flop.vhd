@@ -14,12 +14,12 @@ begin
     process(clk, R)
         begin
 	    if R = '1' then
-		Q <= '0';
-            elsif rising_edge(clk) then
-		if enable = '1' then
-		      Q <= D;
+			Q <= '0';
+		elsif rising_edge(clk) then
+			if enable = '1' then
+				Q <= D;
+			end if;
 		end if;
-            end if;
-        end process;
+	end process;
 
 end Behavioral;
