@@ -6,7 +6,8 @@ use ieee.std_logic_unsigned.all;
 -- Name: Thomas Brown; Based on code written by Dr. Parikh
 -- Course: EGR 426-901
 --
---      Divides the clock frequency and bases it on the 17th bit of the clock divider vector
+--      Divides the clock frequency based on the 'divider' value
+--		that acts as an index to the clk_div vector.
 entity var_clock_divider_2 is
 port (clk : in std_logic;
 	  divider : in natural range 0 to 25;
