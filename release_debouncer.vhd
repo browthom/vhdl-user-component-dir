@@ -3,6 +3,10 @@ use ieee.numeric_std.all;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
 
+-- Author: Thomas Brown
+-- Date: 11/13/19
+-- Description: Sends a single pulse on the output (in sync with clock)
+--              when a button is released on the Basys-3 board.
 entity release_debouncer is
 port (clk : in std_logic;
       button_press : in std_logic;
@@ -28,16 +32,15 @@ begin
                 end if;
             end if;
         end process;
-        
-    debounce_output: process(temp)
-        begin
-            -- If 'temp' has bit 127 set to '1' and all other bits are set to '0'
-            if temp = x"8000_0000_0000_0000_0000_0000_0000_0000" then
-                output <= '1';
-            else   
-                output <= '0';
-            end if;
-        end process;
-        
+
+debounce_output: process(temp)
+    begin
+        -- If 'temp' has bit 127 set to '1' and all other bits are set to '0'
+        if temp = x"8000_0000_0000_0000_0000_0000_0000_0000" then
+            output <= '1';
+        else   
+            output <= '0';
+        end if;
+    end process;
 
 end Behavioral;

@@ -3,9 +3,12 @@ use ieee.numeric_std.all;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
 
+-- Author: Thomas Brown
+-- Date: 11/13/19
+-- Description: 2-bit counter that counts from 0 to 3
 entity two_bit_counter is
 port (clk, reset : in std_logic;
-	  output : out std_logic_vector (1 downto 0));
+      output : out std_logic_vector (1 downto 0));
 end two_bit_counter;
 
 architecture Behavioral of two_bit_counter is
@@ -13,15 +16,16 @@ architecture Behavioral of two_bit_counter is
 signal temp_out : std_logic_vector (1 downto 0) := (others => '0');
 
 begin
+
     process(clk, reset)
         begin
-			if reset = '1' then
-				temp_out <= (others => '0');
+            if reset = '1' then
+                temp_out <= (others => '0');
             elsif rising_edge(clk) then
                 temp_out <= temp_out + 1;
             end if;
         end process;
-		
-    output <= temp_out;
-    
+
+output <= temp_out;
+
 end Behavioral;

@@ -3,10 +3,13 @@ use ieee.numeric_std.all;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
 
+-- Author: Thomas Brown
+-- Date: 11/13/19
+-- Description: An 8-bit buffer
 entity buffer_8_bit is
 port (clk, reset, enable : in std_logic;
-	  input : in std_logic_vector (7 downto 0);
-	  output : out std_logic_vector (7 downto 0));
+      input : in std_logic_vector (7 downto 0);
+      output : out std_logic_vector (7 downto 0));
 end buffer_8_bit;
 
 architecture Behavioral of buffer_8_bit is
@@ -14,17 +17,18 @@ architecture Behavioral of buffer_8_bit is
 signal temp_out : std_logic_vector (7 downto 0) := (others => '0');
 
 begin
+
     process(clk, reset)
         begin
-			if reset = '1' then
-				temp_out <= (others => '0');
+            if reset = '1' then
+                temp_out <= (others => '0');
             elsif rising_edge(clk) then
-				if enable = '1' then
-					temp_out <= input;
-				end if;
+                if enable = '1' then
+                    temp_out <= input;
+                end if;
             end if;
         end process;
-		
-    output <= temp_out;
-	
+
+output <= temp_out;
+
 end Behavioral;
