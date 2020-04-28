@@ -1,3 +1,5 @@
+-- *NOTE: This is a work in progress.
+-- Do not use this.
 library ieee;
 use ieee.numeric_std.all;
 use ieee.std_logic_1164.all;
